@@ -1,0 +1,38 @@
+group 'com.epam.tat'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: "info.solidsoft.pitest"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.2.4'
+    }
+}
+
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy-testng', version: '2.0.6'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+pitest {
+
+    targetClasses = ['com.ep.tut.*', 'com.ep.tut.*']  //by default "${project.group}.*"
+    verbose = true
+    testSourceSets = [sourceSets.test]
+    mainSourceSets = [sourceSets.main]
+    targetTests = ['com.epam.tat.*']
+    outputFormats = ['XML', 'HTML']
+    //mutators = ['NEGATE_CONDITIONALS']
+}
+
