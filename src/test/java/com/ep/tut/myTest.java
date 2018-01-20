@@ -12,6 +12,6 @@ public class myTest {
 
     @Test
     public void myT() {
-        Assert.assertTrue(4 != d);
+        Assert.assertTrue(2 != d);
     }
 }
